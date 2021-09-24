@@ -1,6 +1,6 @@
 ## ----setup, include=FALSE--------------------------------------------------------------------------------------------------------
 #knitr::opts_chunk$set(echo = TRUE)
-k#nitr::opts_chunk$set(comment=NA)
+#knitr::opts_chunk$set(comment=NA)
 
 
 ## --------------------------------------------------------------------------------------------------------------------------------
@@ -36,10 +36,10 @@ tabell
 ## --------------------------------------------------------------------------------------------------------------------------------
 tabell <-
   tabell %>% 
-  mutate(BNP=str_replace_all(BNP, " ", ""),
-         BNP_endring=na_if(BNP_endring, ""),
+  mutate(BNP=str_replace_all(BNP, " ", ""), #erstatter mellomrom som tusenskilletegn for BNP
+         BNP_endring=na_if(BNP_endring, ""), # tomme regn("") for endringer med manglende observasjoner
          BNP_percap_endring=na_if(BNP_percap_endring, ""),
-         BNP_endring=str_replace(BNP_endring, ",","."),
+         BNP_endring=str_replace(BNP_endring, ",","."), #endrer fra , til .
          BNP_percap_endring=str_replace(BNP_percap_endring, ",",".")) %>% 
   mutate_if(is.character, as.numeric)
 
